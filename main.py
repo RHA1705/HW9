@@ -1,7 +1,8 @@
 user_data_dict = {}
-''''''
+'''Data storage'''
 
 def input_error(func):
+    '''Decorator for working with exeptions'''
     def inner(*args, **kwargs):
         try:
             result = func(*args, **kwargs)
