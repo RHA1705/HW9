@@ -8,11 +8,11 @@ def input_error(func):
         try:
             result = func(*args, **kwargs)
         except KeyError:
-            result = f'User not found'
+            result = 'User not found'
         except ValueError:
-            result = f'Phone number incorrect'
+            result = 'Phone number incorrect'
         except IndexError:
-            result = f'One of parameters missed'
+            result = 'One of parameters missed'
         return result
     return inner
 
@@ -25,8 +25,7 @@ def main():
         if command in exit_list:
             print('Good bye!')
             break
-        else:
-            print(parser(command))
+        print(parser(command))
 
 def parser(user_input):
     '''Function define key words (user commands)'''
@@ -35,11 +34,13 @@ def parser(user_input):
     elif user_input.lower().startswith('add'):
         return handler_add(user_input)
     elif user_input.lower().startswith('change'):
-        return handler_change(user_input)   
+        return handler_change(user_input)
     elif user_input.lower().startswith('phone'):
         return handler_phone(user_input)
     elif user_input.lower().startswith('show all'):
         return handler_show_all(user_input)
+    else:
+        
 
 @input_error
 def handler_add(user_input):
@@ -57,10 +58,9 @@ def handler_change(user_input):
     if user_data[1] in user_data_dict:
         user_data_dict.update({user_data[1] : user_data[2]})
         return 'User updated succesfully!'
-    else:
-        raise KeyError
+    raise KeyError
 
-@input_error    
+@input_error
 def handler_phone(user_input):
     '''Function define actions if user command is "phone"'''
     user_data = user_input.split(' ')
@@ -74,9 +74,8 @@ def handler_show_all(user_input):
     for key, value in user_data_dict.items():
         row = f'For name {key} phone is {value}'
         users_data.append(row)
-
     return ', '.join(users_data)
-    
+
 def check_phone_number(user_input):
     '''Function checks whether all characters are numbers'''
     user_data = user_input.split(' ')
