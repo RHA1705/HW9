@@ -39,8 +39,6 @@ def parser(user_input):
         return handler_phone(user_input)
     elif user_input.lower().startswith('show all'):
         return handler_show_all(user_input)
-    else:
-        
 
 @input_error
 def handler_add(user_input):
