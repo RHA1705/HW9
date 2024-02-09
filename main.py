@@ -31,14 +31,15 @@ def parser(user_input):
     '''Function define key words (user commands)'''
     if user_input.lower().startswith('hello'):
         return 'How can I help you?'
-    elif user_input.lower().startswith('add'):
+    if user_input.lower().startswith('add'):
         return handler_add(user_input)
-    elif user_input.lower().startswith('change'):
+    if user_input.lower().startswith('change'):
         return handler_change(user_input)
-    elif user_input.lower().startswith('phone'):
+    if user_input.lower().startswith('phone'):
         return handler_phone(user_input)
-    elif user_input.lower().startswith('show all'):
+    if user_input.lower().startswith('show all'):
         return handler_show_all(user_input)
+    return 'No command recognize, please enter a right command'
 
 @input_error
 def handler_add(user_input):
